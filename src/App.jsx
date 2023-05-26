@@ -17,6 +17,7 @@ function App() {
   let pokemons = useSelector(state => state.data.pokemons)
   let loading = useSelector(state => state.ui.loading)
   let nameSearchedPokemon = useSelector(state => state.data.searchedPokemon)
+  let limit = useSelector(state => state.data.searchCount)
   let dispatch = useDispatch()
   
   useEffect(()=>{
@@ -26,7 +27,7 @@ function App() {
       if(nameSearchedPokemon)dispatch(addImageToPokemons(filteredPokemonByName(nameSearchedPokemon,pokemons)))
     },
     20)
-  },[nameSearchedPokemon])
+  },[nameSearchedPokemon,limit])
 
   return (
     <div className='flex justify-center items-center flex-col w-full h-full '>
